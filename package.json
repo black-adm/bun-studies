@@ -2,6 +2,7 @@
   "name": "bun-samples",
   "module": "index.ts",
   "devDependencies": {
+    "@faker-js/faker": "^10.1.0",
     "@types/bun": "latest"
   },
   "peerDependencies": {
@@ -9,8 +10,9 @@
   },
   "private": true,
   "scripts": {
-    "dev": "bun run --watch index.ts",
-    "start": "bun run index.ts"
+    "dev": "bun run --watch src/main.ts",
+    "start": "bun run src/main.ts",
+    "seed": "bun run src/db/seed.ts"
   },
   "type": "module"
 }
