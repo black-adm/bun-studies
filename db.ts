@@ -1,3 +1,9 @@
-import { SQL, sql } from "bun";
+import { SQL } from "bun";
 
-export const db = new SQL(process.env.DATABASE_URL!);
+const db = new SQL(`${process.env.DATABASE_URL}`);
+
+if (!db) {
+  throw new Error("DATABASE_URL is not set");
+}
+
+export const sql = db;

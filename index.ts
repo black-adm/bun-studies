@@ -1,9 +1,9 @@
-import { db } from "./db";
+import { sql } from "./db";
 
 async function main() {
-  await db`DROP TABLE IF EXISTS products`;
+  await sql`DROP TABLE IF EXISTS products`;
 
-  await db`CREATE TABLE IF NOT EXISTS products (
+  await sql`CREATE TABLE IF NOT EXISTS products (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     price NUMERIC NOT NULL
@@ -16,9 +16,9 @@ async function main() {
     { name: "Boné Rust", price: 249.99 },
   ];
 
-  await db`INSERT INTO products ${db(data)} RETURNING *`;
+  await sql`INSERT INTO products ${sql(data)} RETURNING *`;
 
-  const products = await db`SELECT * FROM products ORDER BY price`;
+  const products = await sql`SELECT * FROM products ORDER BY price`;
   console.log(products);
 }
 
